@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
 .App {
   text-align: center;
 }
@@ -40,4 +43,22 @@
 @font-face {
   font-family: 'CoolFont';
   src: url('/public/fonts/CoolFont.otf') format('opentype');
+}
+
+input, button, canvas {
+  margin: 25px;
+  font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+}
+
+input[type="text"] {
+  flex-grow: 1; /* Expands to fill available space */
+  min-width: 300px;
+  gap: 0; 
+}
+
+input[type="file"] { 
+  margin-left: 130px;
 }

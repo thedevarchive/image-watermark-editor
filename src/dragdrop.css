@@ -1,6 +1,7 @@
 /* Taken from 
    https://www.geeksforgeeks.org/drag-and-drop-file-upload-component-with-react-hooks/?ref=ml_lbp */
 .drop-file-input {
+    margin: 35px;
     position: relative;
     width: 800px;
     height: 400px;
