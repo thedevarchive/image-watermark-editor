@@ -1,0 +1,41 @@
+/* Taken from 
+   https://www.geeksforgeeks.org/drag-and-drop-file-upload-component-with-react-hooks/?ref=ml_lbp */
+.drop-file-input {
+    position: relative;
+    width: 800px;
+    height: 400px;
+    border: 4px dotted;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--input-bg);
+}
+
+.drop-file-input input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.drop-file-input:hover,
+.drop-file-input.dragover {
+    opacity: 0.6;
+}
+
+.drop-file-input__label {
+    text-align: center;
+    color: var(--txt-second-color);
+    font-weight: 600;
+    padding: 10px;
+}
+
+.drop-file-input__label img {
+    width: 100px;
+}

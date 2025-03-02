@@ -1,9 +1,21 @@
 import './App.css';
+import './dragdrop.css';
 import { useRef, useState } from "react";
+import { MdFileUpload } from "react-icons/md";
 
 function App() {
   const [image, setImage] = useState(null);
+  const [filename, setFilename] = useState("");
+
   const canvasRef = useRef(null);
+
+  const wrapperRef = useRef(null);
+
+  const onDragEnter = () => wrapperRef.current.classList.add('dragover');
+
+  const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
+
+  const onDrop = () => wrapperRef.current.classList.remove('dragover');
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -11,6 +23,7 @@ function App() {
       const reader = new FileReader();
       reader.onload = (e) => setImage(e.target.result);
       reader.readAsDataURL(file);
+      setFilename(file.name); 
     }
   };
 
@@ -23,9 +36,25 @@ function App() {
       canvas.width = img.width;
       canvas.height = img.height;
       ctx.drawImage(img, 0, 0);
-      ctx.font = "48px Arial";
-      ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-      ctx.fillText("Watermark", img.width / 2, img.height / 2);
+
+      const text = "Made by ShibSquad";
+      // Get text width
+      const textWidth = ctx.measureText(text).width + 300;
+      // Approximate text height (adjust as needed)
+      const textHeight = 48;
+
+      // Corrected center position
+      const x = (canvas.width - textWidth) / 2;
+      const y = (canvas.height + textHeight) / 2;
+
+      const font = new FontFace("CoolFont", "url(/fonts/CoolFont.otf)");
+      font.load().then(() => {
+        document.fonts.add(font);
+        ctx.font = "48px CoolFont";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+        ctx.fillText(text, x, y);
+      });
+
     };
   };
 
@@ -39,6 +68,26 @@ function App() {
 
   return (
     <div className='App-header'>
+      <div
+        ref={wrapperRef}
+        className="drop-file-input"
+        onDragEnter={onDragEnter}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+      >
+        <div className="drop-file-input__label">
+          <MdFileUpload size={70} color="white" />
+          {
+            filename != "" ? (
+              <p>{filename}</p>
+            ) : (
+              <p>Drag & Drop your files here</p>
+            )
+          }
+        </div>
+        <input type="file" accept="image/*" onChange={handleImageUpload} />
+      </div>
+
       <input type="file" accept="image/*" onChange={handleImageUpload} />
       <button onClick={addWatermark}>Add Watermark</button>
       <button onClick={downloadImage}>Download</button>
