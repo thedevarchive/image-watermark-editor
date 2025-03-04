@@ -45,7 +45,22 @@
   src: url('/public/fonts/CoolFont.otf') format('opentype');
 }
 
-input, button, canvas {
+button {
+  background-color: #3B82F6; 
+  border: none;
+  border-radius: 10px;
+  color: white; 
+  font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  height: 45px;
+  margin: 25px;
+  width: 200px;
+}
+
+input, canvas {
   margin: 25px;
   font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -55,10 +70,19 @@ input, button, canvas {
 
 input[type="text"] {
   flex-grow: 1; /* Expands to fill available space */
+  font-size: 18px;
   min-width: 300px;
   gap: 0; 
 }
 
 input[type="file"] { 
+  font-size: 18px;
   margin-left: 130px;
+}
+
+input[type="file"]::file-selector-button {
+  font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 18px;
 }
