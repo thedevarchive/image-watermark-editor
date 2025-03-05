@@ -67,18 +67,6 @@ input, canvas {
 input[type="text"] {
   flex-grow: 1; /* Expands to fill available space */
   font-size: 18px;
-  min-width: 300px;
+  min-width: 200px;
   gap: 0; 
-}
-
-input[type="file"] { 
-  font-size: 18px;
-  margin-left: 130px;
-}
-
-input[type="file"]::file-selector-button {
-  font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  font-size: 18px;
 }
