@@ -87,8 +87,6 @@ function App() {
         </div>
         <input type="file" accept="image/*" onChange={handleImageUpload} />
       </div>
-
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
       <div style={{ display: "flex" }}>
         <input type="text" value={watermark}
           onChange={(e) => setWatermark(e.target.value)}
