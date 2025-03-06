@@ -70,3 +70,68 @@ input[type="text"] {
   min-width: 200px;
   gap: 0; 
 }
+
+.form-input {
+  height: 35px;
+  font-size: 15px;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #3B82F6;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.text-input {
+  height: 35px;
+  font-size: 15px;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #3B82F6;
+  border-radius: 5px;
+  padding: 0 10px;
+  width: 200px;
+}
+
+.number-input {
+  height: 35px;
+  font-size: 15px;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #3B82F6;
+  border-radius: 5px;
+  padding: 0 10px;
+  width: 70px;
+}
+
+.select-input {
+  height: 35px;
+  font-size: 15px;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #3B82F6;
+  border-radius: 5px;
+  padding: 0 10px;
+  width: 200px;
+}
+
+.input-label {
+  color: white;
+  margin-right: 8px;
+  min-width: 80px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

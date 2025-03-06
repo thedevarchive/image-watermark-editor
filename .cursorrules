@@ -31,3 +31,8 @@ Syntax and Formatting
 Key Conventions
 
 - Use `data` when returning a response with a status code, otherwise return plain objects.
+
+Other Details 
+
+- Label elements must be placed before their corresponding input field
+- Styles of each element should be in App.css file, except for the drag & drop field which has its own style in dragdrop.css

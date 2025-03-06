@@ -9,7 +9,8 @@ function App() {
   const [watermark, setWatermark] = useState({
     text: "",
     x: 50, // percentage
-    y: 50  // percentage
+    y: 50,  // percentage
+    font: "Helvetica" // default font
   });
 
   const canvasRef = useRef(null);
@@ -18,6 +19,13 @@ function App() {
   const onDragEnter = () => wrapperRef.current.classList.add('dragover');
   const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
   const onDrop = () => wrapperRef.current.classList.remove('dragover');
+
+  const fontOptions = [
+    { value: "Helvetica", label: "Helvetica" },
+    { value: "Arial", label: "Arial" },
+    { value: "Times New Roman", label: "Times New Roman" },
+    { value: "CoolFont", label: "Custom Font" }
+  ];
 
   // Handles image file upload from input element
   const handleImageUpload = (event) => {
@@ -54,10 +62,13 @@ function App() {
       const x = (canvas.width * watermark.x) / 100;
       const y = (canvas.height * watermark.y) / 100;
 
+      // Get custom font from files
       const font = new FontFace("CoolFont", "url(/fonts/CoolFont.otf)");
       font.load().then(() => {
-        document.fonts.add(font);
-        ctx.font = "48px CoolFont";
+        document.fonts.add(font); // Add custom font to the document
+
+        // Add watermark to image based on font choice and position
+        ctx.font = `48px ${watermark.font}`;
         ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
         ctx.fillText(watermark.text, x, y);
       });
@@ -93,19 +104,35 @@ function App() {
         </div>
         <input type="file" accept="image/*" onChange={handleImageUpload} />
       </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <span style={{ color: 'white', marginRight: '8px', minWidth: '80px' }}>Watermark text:</span>
+      <div className="form-container">
+        <div className="input-group">
+          <span className="input-label">Watermark text:</span>
           <input
             type="text"
             value={watermark.text}
             onChange={(e) => setWatermark(prev => ({ ...prev, text: e.target.value }))}
             placeholder="Enter watermark text"
+            className="text-input"
           />
         </div>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ color: 'white', marginRight: '8px', minWidth: '80px' }}>X position:</span>
+        <div className="input-group">
+          <span className="input-label">Font style:</span>
+          <select 
+            value={watermark.font}
+            onChange={(e) => setWatermark(prev => ({ ...prev, font: e.target.value }))}
+            className="select-input"
+          >
+            {fontOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="input-group">
+          <div className="input-group">
+            <span className="input-label">X position:</span>
             <input
               type="number"
               value={watermark.x}
@@ -113,11 +140,11 @@ function App() {
               placeholder="X position (%)"
               min="0"
               max="100"
-              style={{ width: '70px' }}
+              className="number-input"
             />
           </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ color: 'white', marginRight: '8px', minWidth: '80px' }}>Y position:</span>
+          <div className="input-group">
+            <span className="input-label">Y position:</span>
             <input
               type="number"
               value={watermark.y}
@@ -125,11 +152,11 @@ function App() {
               placeholder="Y position (%)"
               min="0"
               max="100"
-              style={{ width: '70px' }}
+              className="number-input"
             />
           </div>
         </div>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+        <div className="input-group">
           <button onClick={addWatermark}>Add Watermark</button>
           <button onClick={downloadImage}>Download</button>
         </div>
