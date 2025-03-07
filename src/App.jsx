@@ -49,6 +49,7 @@ function App() {
     }
   };
 
+  // Handles adding watermark to the image
   const addWatermark = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -58,11 +59,6 @@ function App() {
       canvas.width = img.width;
       canvas.height = img.height;
       ctx.drawImage(img, 0, 0);
-
-      // Get text width
-      const textWidth = ctx.measureText(watermark.text).width + 300;
-      // Approximate text height (adjust as needed)
-      const textHeight = 48;
 
       // Calculate position based on percentages
       const x = (canvas.width * watermark.x) / 100;
@@ -80,6 +76,7 @@ function App() {
     setIsWatermarked(true);
   };
 
+  // Handles downloading the watermarked image
   const downloadImage = () => {
     const canvas = canvasRef.current;
     const link = document.createElement("a");
@@ -90,6 +87,7 @@ function App() {
 
   return (
     <div className='App-header'>
+      {/* Drag and drop file input */}
       <div
         ref={wrapperRef}
         className="drop-file-input"
@@ -100,7 +98,7 @@ function App() {
         <div className="drop-file-input__label">
           <MdFileUpload size={70} color="white" />
           {
-            filename != "" ? (
+            filename !== "" ? (
               <p>{filename}</p>
             ) : (
               <p>Drag & Drop image here</p>
@@ -109,8 +107,10 @@ function App() {
         </div>
         <input type="file" accept="image/*" onChange={handleImageUpload} />
       </div>
+      {/* Form container for watermark settings */}
       <div className="form-container">
         <div className="input-group">
+          {/* Watermark text input */}
           <span className="input-label">Watermark text:</span>
           <input
             type="text"
@@ -121,6 +121,7 @@ function App() {
           />
         </div>
         <div className="input-group">
+          {/* Font style dropdown */}
           <span className="input-label">Font style:</span>
           <select 
             value={watermark.font}
@@ -135,6 +136,7 @@ function App() {
           </select>
         </div>
         <div className="input-group">
+          {/* Font size slider */}
           <span className="input-label">Font size:</span>
           <input
             type="range"
@@ -151,6 +153,7 @@ function App() {
           }}>{watermark.fontSize}px</span>
         </div>
         <div className="input-group">
+          {/* Transparency slider */}
           <span className="input-label">Transparency:</span>
           <input
             type="range"
@@ -168,6 +171,7 @@ function App() {
         </div>
         <div className="input-group">
           <div className="input-group">
+            {/* X position input */}
             <span className="input-label">X position:</span>
             <input
               type="number"
@@ -180,6 +184,7 @@ function App() {
             />
           </div>
           <div className="input-group">
+            {/* Y position input */}
             <span className="input-label">Y position:</span>
             <input
               type="number"
@@ -193,6 +198,7 @@ function App() {
           </div>
         </div>
         <div className="input-group">
+          {/* Colour selection */}
           <span className="input-label">Color:</span>
           <div style={{ display: 'flex', gap: '20px' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: 'white' }}>

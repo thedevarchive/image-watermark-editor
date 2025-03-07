@@ -9,6 +9,7 @@ Key Principles
 - Structure files: exported component, subcomponents, helpers, static content, types.
 - Prefer const over let for variable declarations
 - Use camelCase for variable and function names, PascalCase for component names
+- When writing comments, use Australian (or British) English
 
 Naming Conventions
 
