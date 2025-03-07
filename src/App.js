@@ -13,7 +13,9 @@ function App() {
     x: 50, // percentage
     y: 50,  // percentage
     font: "Helvetica", // default font
-    opacity: 60 // default opacity percentage
+    opacity: 60, // default opacity percentage
+    fontSize: 30, // default font size in pixels
+    color: "white" // default color
   });
 
   const canvasRef = useRef(null);
@@ -70,8 +72,8 @@ function App() {
       const font = new FontFace("CoolFont", "url(/fonts/CoolFont.otf)");
       font.load().then(() => {
         document.fonts.add(font);
-        ctx.font = `48px ${watermark.font}`;
-        ctx.fillStyle = `rgba(255, 255, 255, ${watermark.opacity / 100})`; // Convert percentage to decimal
+        ctx.font = `${watermark.fontSize}px ${watermark.font}`;
+        ctx.fillStyle = `rgba(${watermark.color === 'white' ? '255, 255, 255' : '0, 0, 0'}, ${watermark.opacity / 100})`; // Convert percentage to decimal
         ctx.fillText(watermark.text, x, y);
       });
     };
@@ -132,6 +134,22 @@ function App() {
           </select>
         </div>
         <div className="input-group">
+          <span className="input-label">Font size:</span>
+          <input
+            type="range"
+            value={watermark.fontSize}
+            onChange={(e) => setWatermark(prev => ({ ...prev, fontSize: Number(e.target.value) }))}
+            min="30"
+            max="72"
+            className="slider-input"
+            style={{ width: '200px' }}
+          />
+          <span style={{ 
+            minWidth: '40px',
+            fontSize: '20px'
+          }}>{watermark.fontSize}px</span>
+        </div>
+        <div className="input-group">
           <span className="input-label">Transparency:</span>
           <input
             type="range"
@@ -174,7 +192,30 @@ function App() {
           </div>
         </div>
         <div className="input-group">
-          <button onClick={addWatermark} disabled={!hasFile} onChange={() => setIsWatermarked(true)}>Add Watermark</button>
+          <span className="input-label">Color:</span>
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: 'white' }}>
+              <input
+                type="radio"
+                value="white"
+                checked={watermark.color === 'white'}
+                onChange={(e) => setWatermark(prev => ({ ...prev, color: e.target.value }))}
+              />
+              White
+            </label>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: 'white' }}>
+              <input
+                type="radio"
+                value="black"
+                checked={watermark.color === 'black'}
+                onChange={(e) => setWatermark(prev => ({ ...prev, color: e.target.value }))}
+              />
+              Black
+            </label>
+          </div>
+        </div>
+        <div className="input-group">
+          <button onClick={addWatermark} disabled={!hasFile && watermark.text === ""} onChange={() => setIsWatermarked(true)}>Add Watermark</button>
           <button onClick={downloadImage} disabled={!isWatermarked}>Download</button>
         </div>
       </div>

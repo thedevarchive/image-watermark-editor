@@ -59,8 +59,8 @@ button {
 button:disabled,
 button[disabled]{
   border: 1px solid #999999;
-  background-color: #1E1E1E;
-  color: #EDEDED;
+  background-color: grey;
+  cursor: not-allowed;
 }
 
 input, canvas {
