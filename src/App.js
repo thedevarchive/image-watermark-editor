@@ -103,7 +103,7 @@ function App() {
             filename != "" ? (
               <p>{filename}</p>
             ) : (
-              <p>Drag & Drop your files here</p>
+              <p>Drag & Drop image here</p>
             )
           }
         </div>
