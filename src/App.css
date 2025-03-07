@@ -46,6 +46,7 @@ button {
   border: none;
   border-radius: 10px;
   color: white; 
+  cursor: pointer;
   font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
