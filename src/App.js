@@ -77,6 +77,7 @@ function App() {
         ctx.fillText(watermark.text, x, y);
       });
     };
+    setIsWatermarked(true);
   };
 
   const downloadImage = () => {
@@ -215,7 +216,7 @@ function App() {
           </div>
         </div>
         <div className="input-group">
-          <button onClick={addWatermark} disabled={!hasFile && watermark.text === ""} onChange={() => setIsWatermarked(true)}>Add Watermark</button>
+          <button onClick={addWatermark} disabled={!hasFile && watermark.text === ""}>Add Watermark</button>
           <button onClick={downloadImage} disabled={!isWatermarked}>Download</button>
         </div>
       </div>
