@@ -56,6 +56,13 @@ button {
   width: 200px;
 }
 
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #1E1E1E;
+  color: #EDEDED;
+}
+
 input, canvas {
   margin: 25px;
   font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
@@ -134,4 +141,45 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #1a1a1a;
+  border: 1px solid #3B82F6;
+  border-radius: 5px;
+  outline: none;
+}
+
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #3B82F6;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.slider-input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #3B82F6;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.slider-input::-webkit-slider-thumb:hover,
+.slider-input::-moz-range-thumb:hover {
+  background: #60a5fa;
+}
+
+.slider-input:active::-webkit-slider-thumb,
+.slider-input:active::-moz-range-thumb {
+  background: #2563eb;
 }

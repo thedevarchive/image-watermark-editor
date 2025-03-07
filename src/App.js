@@ -5,12 +5,15 @@ import { MdFileUpload } from "react-icons/md";
 
 function App() {
   const [image, setImage] = useState(null);
+  const [hasFile, setHasFile] = useState(false);
+  const [isWatermarked, setIsWatermarked] = useState(false);
   const [filename, setFilename] = useState("");
   const [watermark, setWatermark] = useState({
     text: "",
     x: 50, // percentage
     y: 50,  // percentage
-    font: "Helvetica" // default font
+    font: "Helvetica", // default font
+    opacity: 60 // default opacity percentage
   });
 
   const canvasRef = useRef(null);
@@ -24,7 +27,7 @@ function App() {
     { value: "Helvetica", label: "Helvetica" },
     { value: "Arial", label: "Arial" },
     { value: "Times New Roman", label: "Times New Roman" },
-    { value: "CoolFont", label: "Custom Font" }
+    { value: "CoolFont", label: "Mystery Font" }
   ];
 
   // Handles image file upload from input element
@@ -40,6 +43,7 @@ function App() {
       reader.readAsDataURL(file);
       // Update filename state with the uploaded file's name
       setFilename(file.name);
+      setHasFile(true);
     }
   };
 
@@ -65,11 +69,9 @@ function App() {
       // Get custom font from files
       const font = new FontFace("CoolFont", "url(/fonts/CoolFont.otf)");
       font.load().then(() => {
-        document.fonts.add(font); // Add custom font to the document
-
-        // Add watermark to image based on font choice and position
+        document.fonts.add(font);
         ctx.font = `48px ${watermark.font}`;
-        ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+        ctx.fillStyle = `rgba(255, 255, 255, ${watermark.opacity / 100})`; // Convert percentage to decimal
         ctx.fillText(watermark.text, x, y);
       });
     };
@@ -126,10 +128,25 @@ function App() {
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
-            ))}
+            ))} 
           </select>
         </div>
-        
+        <div className="input-group">
+          <span className="input-label">Transparency:</span>
+          <input
+            type="range"
+            value={watermark.opacity}
+            onChange={(e) => setWatermark(prev => ({ ...prev, opacity: Number(e.target.value) }))}
+            min="0"
+            max="100"
+            className="slider-input"
+            style={{ width: '200px' }}
+          />
+          <span style={{ 
+            minWidth: '40px',
+            fontSize: '20px'
+          }}>{watermark.opacity}%</span>
+        </div>
         <div className="input-group">
           <div className="input-group">
             <span className="input-label">X position:</span>
@@ -157,8 +174,8 @@ function App() {
           </div>
         </div>
         <div className="input-group">
-          <button onClick={addWatermark}>Add Watermark</button>
-          <button onClick={downloadImage}>Download</button>
+          <button onClick={addWatermark} disabled={!hasFile} onChange={() => setIsWatermarked(true)}>Add Watermark</button>
+          <button onClick={downloadImage} disabled={!isWatermarked}>Download</button>
         </div>
       </div>
       <canvas ref={canvasRef} />
