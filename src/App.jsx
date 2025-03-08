@@ -217,7 +217,7 @@ function App() {
                 checked={watermark.color === 'black'}
                 onChange={(e) => setWatermark(prev => ({ ...prev, color: e.target.value }))}
               />
-              Black
+              Black  
             </label>
           </div>
         </div>
