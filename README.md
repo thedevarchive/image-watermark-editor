@@ -1,6 +1,6 @@
 # About this Project
 
-TBA
+This is a web application that allows users to watermark images and download them. 
 
 # How to Run
 
