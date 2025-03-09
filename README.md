@@ -6,11 +6,11 @@ This is a web application that allows users to watermark images and download the
 
 In the Command Line or Terminal, enter this project's directory and type 
 
-## `npm install`
+### `npm install`
 
 to install its dependencies, then type
 
-## `npm start`
+### `npm start`
 
 to run the project. 
 
