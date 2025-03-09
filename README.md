@@ -18,7 +18,7 @@ You may also visit https://tda-image-watermarker.netlify.app/ to see the demo.
 
 # How to Use
 
-TBA
+Upload an image in the drag and drop area. Then, add the watermark text and make as many modifications to the text as desired. Then, click on Add Watermark to preview the watermarked image, which will be shown below the page. When satisfied, click on Download to save the image. Otherwise, the watermark can be modified by adjusting the settings and clicking on Add Watermark to update the image. 
 
 # Features
 
