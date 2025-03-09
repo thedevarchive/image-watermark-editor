@@ -4,7 +4,17 @@ This is a web application that allows users to watermark images and download the
 
 # How to Run
 
-TBA
+In the Command Line or Terminal, enter this project's directory and type 
+
+## `npm install`
+
+to install its dependencies, then type
+
+## `npm start`
+
+to run the project. 
+
+You may also visit https://tda-image-watermarker.netlify.app/ to see the demo. 
 
 # How to Use
 
