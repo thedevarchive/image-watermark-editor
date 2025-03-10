@@ -25,7 +25,10 @@ Upload an image in the drag and drop area. Then, add the watermark text and make
 * Drag & drop area for uploading images
 * Custom input for watermark text
 * Four fonts to choose for the watermark text
-* 
+* Font size and transparency sliders
+* Watermark positioning
+* White or black watermark text colour
+* Ability to download watermarked image
 
 # How to Report Issues
 
