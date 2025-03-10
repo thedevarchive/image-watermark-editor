@@ -22,7 +22,8 @@ Upload an image in the drag and drop area. Then, add the watermark text and make
 
 # Features
 
-* TBA
+* Drag & drop area for uploading images
+* 
 
 # How to Report Issues
 
