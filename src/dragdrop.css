@@ -5,7 +5,7 @@
     position: relative;
     width: 800px;
     height: 400px;
-    border: 4px dotted;
+    border: 4px dotted var(--text-color);
     border-radius: 20px;
 
     display: flex;
@@ -32,7 +32,7 @@
 
 .drop-file-input__label {
     text-align: center;
-    color: var(--txt-second-color);
+    color: var(--text-color);
     font-weight: 600;
     padding: 10px;
 }

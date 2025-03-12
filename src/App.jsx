@@ -1,13 +1,15 @@
 import './App.css';
 import './dragdrop.css';
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { MdFileUpload } from "react-icons/md";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 function App() {
   const [image, setImage] = useState(null);
   const [hasFile, setHasFile] = useState(false);
   const [isWatermarked, setIsWatermarked] = useState(false);
   const [filename, setFilename] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [watermark, setWatermark] = useState({
     text: "",
     x: 50, // percentage
@@ -17,6 +19,11 @@ function App() {
     fontSize: 30, // default font size in pixels
     color: "white" // default color
   });
+
+  // Apply theme to document body
+  useEffect(() => {
+    document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
 
   const canvasRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -87,6 +94,13 @@ function App() {
 
   return (
     <div className='App-header'>
+      <button 
+        onClick={() => setIsDarkMode(!isDarkMode)}
+        className="theme-toggle"
+        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      >
+        {isDarkMode ? <MdLightMode size={24} /> : <MdDarkMode size={24} />}
+      </button>
       {/* Drag and drop file input */}
       <div
         ref={wrapperRef}
@@ -96,7 +110,7 @@ function App() {
         onDrop={onDrop}
       >
         <div className="drop-file-input__label">
-          <MdFileUpload size={70} color="white" />
+          <MdFileUpload size={70} color={isDarkMode ? "white" : "black"} />
           {
             filename !== "" ? (
               <p>{filename}</p>
@@ -201,7 +215,7 @@ function App() {
           {/* Colour selection */}
           <span className="input-label">Color:</span>
           <div style={{ display: 'flex', gap: '20px' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: 'white' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: isDarkMode ? "white" : "black" }}>
               <input
                 type="radio"
                 value="white"
@@ -210,7 +224,7 @@ function App() {
               />
               White
             </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: 'white' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: isDarkMode ? "white" : "black" }}>
               <input
                 type="radio"
                 value="black"
