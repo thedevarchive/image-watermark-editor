@@ -4,6 +4,9 @@ import { useRef, useState, useEffect } from "react";
 import { MdFileUpload } from "react-icons/md";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 
+// While I decided to make this app, the boilerplate was made by ChatGPT.
+// Link: https://chatgpt.com/share/67d36c9e-28d0-8000-af97-36916b65b3de
+// With the assistance of Cursor, I added other features to the app.
 function App() {
   const [image, setImage] = useState(null);
   const [hasFile, setHasFile] = useState(false);
