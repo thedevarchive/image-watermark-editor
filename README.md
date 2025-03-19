@@ -14,7 +14,7 @@ to install its dependencies, then type
 
 to run the project. 
 
-You may also visit https://tda-image-watermarker.netlify.app/ to see the demo. 
+You may also view the demo [here](https://tda-image-watermarker.netlify.app/). 
 
 # How to Use
 
