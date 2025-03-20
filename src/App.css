@@ -46,14 +46,80 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Media Queries for mobile responsiveness */
+@media (max-width: 768px) {
+  .App-header {
+    padding: 10px;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .form-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+    /* NEW: stack label above input */
+    align-items: flex-start;
+    /* Align to the left */
+  }
+
+  .colour-label {
+    margin-left: 15% !important;
+  }
+
+  div > div > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column !important;
+    color: var(--text-color);
+  }
+
+  div > div > div > label {
+    font-size: 20px !important;
+    margin-left: -20%;
+    margin-top: -15%;
+    margin-bottom: -10%;
+  }
+
+  input[type="number"] {
+    width: 150% !important;
+  }
+
+  button {
+    width: 100%;
+    /* Make buttons full width */
+    padding: 15px;
+    /* Increase padding for touch targets */
+    font-size: 16px;
+    /* Increase font size for readability */
+    line-height: 5px;
+    margin: 3px !important;
+  }
+
+  .theme-toggle {
+    position: fixed !important;
+    /* Changed from absolute to fixed */
+    top: 10px !important;
+    /* Small spacing from top */
+    right: 1% !important;
+    /* Small spacing from right */
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    /* Keep it on top of everything */
   }
 }
 
@@ -84,6 +150,8 @@
   color: var(--button-text);
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 10;
+  /* Set a higher z-index */
 }
 
 .theme-toggle:hover {
@@ -95,6 +163,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -122,13 +191,14 @@ button {
 }
 
 button:disabled,
-button[disabled]{
+button[disabled] {
   border: 1px solid var(--disabled-color);
   background-color: var(--disabled-color);
   cursor: not-allowed;
 }
 
-input, canvas {
+input,
+canvas {
   margin: 25px;
   font-family: 'Poppins', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

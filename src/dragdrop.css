@@ -40,3 +40,16 @@
 .drop-file-input__label img {
     width: 100px;
 }
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .drop-file-input {
+      width: 75%;
+      height: 50%;
+      flex-direction: column;
+    }
+
+    .drop-file-input__label img {
+        width: 100%;
+    }
+}

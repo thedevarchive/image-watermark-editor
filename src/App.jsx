@@ -97,7 +97,7 @@ function App() {
 
   return (
     <div className='App-header'>
-      <button 
+      <button
         onClick={() => setIsDarkMode(!isDarkMode)}
         className="theme-toggle"
         aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -140,7 +140,7 @@ function App() {
         <div className="input-group">
           {/* Font style dropdown */}
           <span className="input-label">Font style:</span>
-          <select 
+          <select
             value={watermark.font}
             onChange={(e) => setWatermark(prev => ({ ...prev, font: e.target.value }))}
             className="select-input"
@@ -149,7 +149,7 @@ function App() {
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
-            ))} 
+            ))}
           </select>
         </div>
         <div className="input-group">
@@ -164,7 +164,7 @@ function App() {
             className="slider-input"
             style={{ width: '200px' }}
           />
-          <span style={{ 
+          <span style={{
             minWidth: '40px',
             fontSize: '20px'
           }}>{watermark.fontSize}px</span>
@@ -181,7 +181,7 @@ function App() {
             className="slider-input"
             style={{ width: '200px' }}
           />
-          <span style={{ 
+          <span style={{
             minWidth: '40px',
             fontSize: '20px'
           }}>{watermark.opacity}%</span>
@@ -216,26 +216,30 @@ function App() {
         </div>
         <div className="input-group">
           {/* Colour selection */}
-          <span className="input-label">Color:</span>
+          <span className="input-label colour-label">Colour:</span>
           <div style={{ display: 'flex', gap: '20px' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: isDarkMode ? "white" : "black" }}>
-              <input
-                type="radio"
-                value="white"
-                checked={watermark.color === 'white'}
-                onChange={(e) => setWatermark(prev => ({ ...prev, color: e.target.value }))}
-              />
-              White
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: isDarkMode ? "white" : "black" }}>
-              <input
-                type="radio"
-                value="black"
-                checked={watermark.color === 'black'}
-                onChange={(e) => setWatermark(prev => ({ ...prev, color: e.target.value }))}
-              />
-              Black  
-            </label>
+            <div className='radio-group'>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: isDarkMode ? "white" : "black" }}>
+                <input
+                  type="radio"
+                  value="white"
+                  checked={watermark.color === 'white'}
+                  onChange={(e) => setWatermark(prev => ({ ...prev, color: e.target.value }))}
+                />
+                White
+              </label>
+            </div>
+            <div className='radio-group'>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '24px', color: isDarkMode ? "white" : "black" }}>
+                <input
+                  type="radio"
+                  value="black"
+                  checked={watermark.color === 'black'}
+                  onChange={(e) => setWatermark(prev => ({ ...prev, color: e.target.value }))}
+                />
+                Black
+              </label>
+            </div>
           </div>
         </div>
         <div className="input-group">
