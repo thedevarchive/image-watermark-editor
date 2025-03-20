@@ -2,6 +2,14 @@
 
 This is a web application that allows users to watermark images and download them. 
 
+Project was developed with the assistance of 
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+and is partially developed in 
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+
+Made with 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+
 # How to Run
 
 In the Command Line or Terminal, enter this project's directory and type 
@@ -14,7 +22,7 @@ to install its dependencies, then type
 
 to run the project. 
 
-You may also view the demo [here](https://tda-image-watermarker.netlify.app/). 
+You may also view the demo [here](https://tda-image-watermarker.netlify.app/). [![Netlify Status](https://api.netlify.com/api/v1/badges/9ef299bd-d294-4433-8b5b-81a3943b1027/deploy-status)](https://app.netlify.com/sites/tda-image-watermarker/deploys)
 
 # How to Use
 
